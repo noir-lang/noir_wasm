@@ -12,5 +12,9 @@
   "sideEffects": false,
   "peerDependencies": {
     "@noir-lang/noir-source-resolver": "1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noir-lang/noir_wasm.git"
   }
 }
