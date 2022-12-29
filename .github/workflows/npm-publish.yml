@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-update-workflow-local-repo:
-    uses: noir-lang/noir/.github/workflows/update.yml@master
+    uses: noir-lang/noir_wasm/.github/workflows/update.yml@master
     secrets: inherit
 
   publish-npm:
