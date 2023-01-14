@@ -1,6 +1,6 @@
 {
   "name": "@noir-lang/noir_wasm",
-  "version": "0.10.0-c82f0dc",
+  "version": "0.10.0-366420e",
   "files": [
     "nodejs",
     "web",
