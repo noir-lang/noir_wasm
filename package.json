@@ -1,9 +1,9 @@
 {
   "name": "@noir-lang/noir_wasm",
   "collaborators": [
-    "Kevaundray Wedderburn <kevtheappdev@gmail.com>"
+    "The Noir Team <kevtheappdev@gmail.com>"
   ],
-  "version": "0.1.0-4943390",
+  "version": "0.1.0-9d6be60",
   "files": [
     "nodejs",
     "web",
