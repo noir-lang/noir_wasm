@@ -19,5 +19,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/noir-lang/noir_wasm.git"
+  },
+  "compiler": {
+    "versionHash": "65e0cbd5023ee5fc7c13730ef9bdf6eb20060ff0"
   }
 }
