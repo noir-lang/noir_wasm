@@ -42,6 +42,4 @@ NOIR_REV_SHORT=$(git rev-parse --short HEAD)
 cd $main_dir
 sed -i -E "s/\[noir-lang\/noir@.+\]\(.+\)/\[noir-lang\/noir@$NOIR_REV_SHORT\](https:\/\/github.com\/noir-lang\/noir\/tree\/$NOIR_REV)/g" ./README.md
 
-cat ./package.json | jq '.repository = { "type" : "git", "url" : "https://github.com/noir-lang/noir_wasm.git" }' | tee ./package.json
-
-
+cat ./package.json | jq '.repository = { "type" : "git", "url" : "https://github.com/noir-lang/noir_wasm.git" }' | jq ".compiler = { \"versionHash\" : \"$NOIR_REV\" }" | tee ./package.json
