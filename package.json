@@ -1,9 +1,6 @@
 {
   "name": "@noir-lang/noir_wasm",
-  "collaborators": [
-    "The Noir Team <kevtheappdev@gmail.com>"
-  ],
-  "version": "0.1.1-65e0cbd",
+  "version": "0.10.0-ae93368",
   "files": [
     "nodejs",
     "web",
@@ -21,6 +18,6 @@
     "url": "https://github.com/noir-lang/noir_wasm.git"
   },
   "compiler": {
-    "versionHash": "65e0cbd5023ee5fc7c13730ef9bdf6eb20060ff0"
+    "versionHash": "ae93368436acf3f5147a1cf9e6ad0d755ed04646"
   }
 }
