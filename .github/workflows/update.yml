@@ -1,4 +1,4 @@
-name: update-repository
+name: Update & Publish
 
 on:
   workflow_dispatch:
