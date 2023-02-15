@@ -1,14 +1,13 @@
 name: update-repository
-# <arch>-<vendor>-<os>-<env>
 
 on:
   workflow_dispatch:
-  workflow_call:
+    inputs:
+      noir-ref:
+        description: The noir reference to checkout
+        required: false
   schedule:
     - cron: "0 2 * * *" # run at 2 AM UTC
-  # push:
-  #   tags:
-  #     - "v*"
 
 jobs:
   update-repository:
@@ -20,13 +19,13 @@ jobs:
 
       - uses: actions/checkout@v3
         with:
-          repository: 'noir-lang/noir'
-          # ref: 'ae93368436acf3f5147a1cf9e6ad0d755ed04646'
-          path: '.cache/noir'
+          repository: "noir-lang/noir"
+          ref: ${{ inputs.noir-ref || 'master' }}
+          path: ".cache/noir"
 
       - name: Collect Revision
         id: collect-rev
-        working-directory: '.cache/noir'
+        working-directory: ".cache/noir"
         run: |
           echo "NOIR_REV_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
@@ -56,6 +55,33 @@ jobs:
       - name: push
         uses: actions-x/commit@v6
         with:
-          message: 'tracking noir@${{ steps.collect-rev.outputs.NOIR_REV_SHORT }}'
+          message: "tracking noir@${{ steps.collect-rev.outputs.NOIR_REV_SHORT }}"
           force: true
-          name: 'kobyhallx'
+          name: "kobyhallx"
+
+  publish-npm:
+    runs-on: ubuntu-22.04
+    needs: update-repository
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Publish to npm (nightly tag)
+        if: ${{ !inputs.noir-ref }}
+        run: |
+          npm publish --tag nightly
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to npm (latest tag)
+        if: ${{ inputs.noir-ref }}
+        run: |
+          npm publish --tag latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
