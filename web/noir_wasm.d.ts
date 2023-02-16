@@ -15,6 +15,10 @@ export function acir_from_bytes(bytes: Uint8Array): any;
 * @returns {Uint8Array}
 */
 export function acir_to_bytes(acir: any): Uint8Array;
+/**
+* @returns {any}
+*/
+export function build_info(): any;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -23,6 +27,7 @@ export interface InitOutput {
   readonly compile: (a: number, b: number) => number;
   readonly acir_from_bytes: (a: number, b: number) => number;
   readonly acir_to_bytes: (a: number, b: number) => void;
+  readonly build_info: () => number;
   readonly __wbindgen_export_0: (a: number) => number;
   readonly __wbindgen_export_1: (a: number, b: number, c: number) => number;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
