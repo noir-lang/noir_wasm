@@ -10,7 +10,7 @@ on:
     - cron: "0 2 * * *" # run at 2 AM UTC
 
 jobs:
-  update-repository:
+  update-and-publish:
     runs-on: ubuntu-22.04
 
     steps:
@@ -58,13 +58,6 @@ jobs:
           message: "tracking noir@${{ steps.collect-rev.outputs.NOIR_REV_SHORT }}"
           force: true
           name: "kobyhallx"
-
-  publish-npm:
-    runs-on: ubuntu-22.04
-    needs: update-repository
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
