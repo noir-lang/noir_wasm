@@ -52,12 +52,16 @@ jobs:
         run: |
           nix-shell noir_wasm.nix --pure --run "./build.sh"
 
-      - name: push
-        uses: actions-x/commit@v6
-        with:
-          message: "tracking noir@${{ steps.collect-rev.outputs.NOIR_REV_SHORT }}"
-          force: true
-          name: "kobyhallx"
+      - name: Configure git
+        run: |
+          git config user.name kobyhallx
+          git config user.email koby@aztecprotocol.com
+
+      - name: Commit updates
+        run: |
+          git add .
+          git commit -m "tracking noir@${{ steps.collect-rev.outputs.NOIR_REV_SHORT }}"
+          git push --force
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
