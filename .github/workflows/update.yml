@@ -10,7 +10,7 @@ on:
     - cron: "0 2 * * *" # run at 2 AM UTC
 
 jobs:
-  update-repository:
+  update-and-publish:
     runs-on: ubuntu-22.04
 
     steps:
