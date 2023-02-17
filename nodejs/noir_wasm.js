@@ -166,14 +166,6 @@ module.exports.acir_to_bytes = function(acir) {
     }
 };
 
-/**
-* @returns {any}
-*/
-module.exports.build_info = function() {
-    const ret = wasm.build_info();
-    return takeObject(ret);
-};
-
 function handleError(f, args) {
     try {
         return f.apply(this, args);
@@ -182,16 +174,16 @@ function handleError(f, args) {
     }
 }
 
+module.exports.__wbindgen_object_drop_ref = function(arg0) {
+    takeObject(arg0);
+};
+
 module.exports.__wbindgen_is_undefined = function(arg0) {
     const ret = getObject(arg0) === undefined;
     return ret;
 };
 
-module.exports.__wbindgen_object_drop_ref = function(arg0) {
-    takeObject(arg0);
-};
-
-module.exports.__wbg_readfile_1ed72752a157b319 = function() { return handleError(function (arg0, arg1, arg2) {
+module.exports.__wbg_readfile_141fe7d2c0f1edde = function() { return handleError(function (arg0, arg1, arg2) {
     const ret = read_file(getStringFromWasm0(arg1, arg2));
     const ptr0 = passStringToWasm0(ret, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
     const len0 = WASM_VECTOR_LEN;
