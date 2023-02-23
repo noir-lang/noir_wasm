@@ -165,6 +165,35 @@ export function acir_to_bytes(acir) {
 }
 
 /**
+* @param {Uint8Array} bytes
+* @returns {any}
+*/
+export function acir_read_bytes(bytes) {
+    const ptr0 = passArray8ToWasm0(bytes, wasm.__wbindgen_export_0);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.acir_read_bytes(ptr0, len0);
+    return takeObject(ret);
+}
+
+/**
+* @param {any} acir
+* @returns {Uint8Array}
+*/
+export function acir_write_bytes(acir) {
+    try {
+        const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+        wasm.acir_write_bytes(retptr, addHeapObject(acir));
+        var r0 = getInt32Memory0()[retptr / 4 + 0];
+        var r1 = getInt32Memory0()[retptr / 4 + 1];
+        var v0 = getArrayU8FromWasm0(r0, r1).slice();
+        wasm.__wbindgen_export_2(r0, r1 * 1);
+        return v0;
+    } finally {
+        wasm.__wbindgen_add_to_stack_pointer(16);
+    }
+}
+
+/**
 * @returns {any}
 */
 export function build_info() {

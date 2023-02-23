@@ -16,6 +16,16 @@ export function acir_from_bytes(bytes: Uint8Array): any;
 */
 export function acir_to_bytes(acir: any): Uint8Array;
 /**
+* @param {Uint8Array} bytes
+* @returns {any}
+*/
+export function acir_read_bytes(bytes: Uint8Array): any;
+/**
+* @param {any} acir
+* @returns {Uint8Array}
+*/
+export function acir_write_bytes(acir: any): Uint8Array;
+/**
 * @returns {any}
 */
 export function build_info(): any;
@@ -27,6 +37,8 @@ export interface InitOutput {
   readonly compile: (a: number, b: number) => number;
   readonly acir_from_bytes: (a: number, b: number) => number;
   readonly acir_to_bytes: (a: number, b: number) => void;
+  readonly acir_read_bytes: (a: number, b: number) => number;
+  readonly acir_write_bytes: (a: number, b: number) => void;
   readonly build_info: () => number;
   readonly __wbindgen_export_0: (a: number) => number;
   readonly __wbindgen_export_1: (a: number, b: number, c: number) => number;
