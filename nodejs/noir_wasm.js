@@ -211,13 +211,13 @@ function handleError(f, args) {
     }
 }
 
+module.exports.__wbindgen_object_drop_ref = function(arg0) {
+    takeObject(arg0);
+};
+
 module.exports.__wbindgen_is_undefined = function(arg0) {
     const ret = getObject(arg0) === undefined;
     return ret;
-};
-
-module.exports.__wbindgen_object_drop_ref = function(arg0) {
-    takeObject(arg0);
 };
 
 module.exports.__wbg_readfile_1ed72752a157b319 = function() { return handleError(function (arg0, arg1, arg2) {
