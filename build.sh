@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
+main_dir=$(pwd)
 CACHE_DIR=".cache"
-NOIR_REPO_CACHE="$CACHE_DIR/noir"
+NOIR_REPO_CACHE="$main_dir/$CACHE_DIR/noir"
 GIT_VENDOR_URL="https://github.com"
 NOIR_REPO_PATH="noir-lang/noir"
-NOIR_CLONE_URL="$GIT_VENDOR_URL/$NOIR_REPO_PATH.git"
-NOIR_BUILD="./.build"
-main_dir=$(pwd)
+NOIR_CLONE_URL="$GIT_VENDOR_URL/$NOIR_REPO_PATH"
+NOIR_BUILD="$main_dir/.build/noir"
 
 rm -rf "$NOIR_BUILD"
 
@@ -17,7 +17,6 @@ if [[ -d "$NOIR_REPO_CACHE" ]]; then
 else
     echo "$NOIR_REPO_CACHE does not exists on your filesystem, clonning from $NOIR_CLONE_URL"
     git clone $NOIR_CLONE_URL $NOIR_REPO_CACHE
-    # git checkout ae93368436acf3f5147a1cf9e6ad0d755ed04646
 fi
 
 cp -a "$NOIR_REPO_CACHE/." "$NOIR_BUILD/"
