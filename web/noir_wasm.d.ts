@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-* @param {string} src
+* @param {any} args
 * @returns {any}
 */
-export function compile(src: string): any;
+export function compile(args: any): any;
 /**
 * @param {Uint8Array} bytes
 * @returns {any}
@@ -34,7 +34,7 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly compile: (a: number, b: number) => number;
+  readonly compile: (a: number) => number;
   readonly acir_from_bytes: (a: number, b: number) => number;
   readonly acir_to_bytes: (a: number, b: number) => void;
   readonly acir_read_bytes: (a: number, b: number) => number;

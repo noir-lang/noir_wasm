@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-* @param {string} src
+* @param {any} args
 * @returns {any}
 */
-export function compile(src: string): any;
+export function compile(args: any): any;
 /**
 * @param {Uint8Array} bytes
 * @returns {any}
