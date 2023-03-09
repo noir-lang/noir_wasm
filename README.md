@@ -1,4 +1,4 @@
 # Noir Lang WASM JavaScript Package
 
 ## Tracks
-Noir lang Repository [noir-lang/noir@63f596e9](https://github.com/noir-lang/noir/tree/63f596e9ba1a632d4eef237b41fb6498c9e88958)
+Noir lang Repository [noir-lang/noir@870ea46](https://github.com/noir-lang/noir/tree/870ea463583502db106d4c8b05ad5c02fb6f8428)

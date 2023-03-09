@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
-export function compile(a: number): number;
+export function compile(a: number, b: number): number;
 export function acir_from_bytes(a: number, b: number): number;
 export function acir_to_bytes(a: number, b: number): void;
 export function acir_read_bytes(a: number, b: number): number;
