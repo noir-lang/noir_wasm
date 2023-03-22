@@ -1,6 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+* @param {string} level
+*/
+export function init_log_level(level: string): void;
+/**
 * @param {any} args
 * @returns {any}
 */

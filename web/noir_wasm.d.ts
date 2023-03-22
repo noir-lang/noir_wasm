@@ -1,6 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+* @param {string} level
+*/
+export function init_log_level(level: string): void;
+/**
 * @param {any} args
 * @returns {any}
 */
@@ -34,6 +38,7 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
+  readonly init_log_level: (a: number, b: number) => void;
   readonly compile: (a: number) => number;
   readonly acir_from_bytes: (a: number, b: number) => number;
   readonly acir_to_bytes: (a: number, b: number) => void;
