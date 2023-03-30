@@ -5,6 +5,10 @@
 */
 export function init_log_level(level: string): void;
 /**
+* @returns {any}
+*/
+export function build_info(): any;
+/**
 * @param {any} args
 * @returns {any}
 */
@@ -29,22 +33,18 @@ export function acir_read_bytes(bytes: Uint8Array): any;
 * @returns {Uint8Array}
 */
 export function acir_write_bytes(acir: any): Uint8Array;
-/**
-* @returns {any}
-*/
-export function build_info(): any;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly init_log_level: (a: number, b: number) => void;
+  readonly build_info: () => number;
   readonly compile: (a: number) => number;
   readonly acir_from_bytes: (a: number, b: number) => number;
   readonly acir_to_bytes: (a: number, b: number) => void;
   readonly acir_read_bytes: (a: number, b: number) => number;
   readonly acir_write_bytes: (a: number, b: number) => void;
-  readonly build_info: () => number;
   readonly __wbindgen_export_0: (a: number) => number;
   readonly __wbindgen_export_1: (a: number, b: number, c: number) => number;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;

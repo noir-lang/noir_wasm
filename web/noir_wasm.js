@@ -125,6 +125,14 @@ export function init_log_level(level) {
 }
 
 /**
+* @returns {any}
+*/
+export function build_info() {
+    const ret = wasm.build_info();
+    return takeObject(ret);
+}
+
+/**
 * @param {any} args
 * @returns {any}
 */
@@ -200,14 +208,6 @@ export function acir_write_bytes(acir) {
     }
 }
 
-/**
-* @returns {any}
-*/
-export function build_info() {
-    const ret = wasm.build_info();
-    return takeObject(ret);
-}
-
 function handleError(f, args) {
     try {
         return f.apply(this, args);
@@ -261,6 +261,10 @@ function getImports() {
     imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
         takeObject(arg0);
     };
+    imports.wbg.__wbindgen_string_new = function(arg0, arg1) {
+        const ret = getStringFromWasm0(arg0, arg1);
+        return addHeapObject(ret);
+    };
     imports.wbg.__wbg_new_abda76e883ba8a5f = function() {
         const ret = new Error();
         return addHeapObject(ret);
@@ -278,10 +282,6 @@ function getImports() {
         } finally {
             wasm.__wbindgen_export_2(arg0, arg1);
         }
-    };
-    imports.wbg.__wbindgen_string_new = function(arg0, arg1) {
-        const ret = getStringFromWasm0(arg0, arg1);
-        return addHeapObject(ret);
     };
     imports.wbg.__wbg_readfile_a43240e6f11dd5eb = function() { return handleError(function (arg0, arg1, arg2) {
         const ret = read_file(getStringFromWasm0(arg1, arg2));
