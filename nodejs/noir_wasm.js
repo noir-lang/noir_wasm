@@ -118,23 +118,6 @@ function getInt32Memory0() {
     return cachedInt32Memory0;
 }
 /**
-* @param {string} level
-*/
-module.exports.init_log_level = function(level) {
-    const ptr0 = passStringToWasm0(level, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
-    const len0 = WASM_VECTOR_LEN;
-    wasm.init_log_level(ptr0, len0);
-};
-
-/**
-* @returns {any}
-*/
-module.exports.build_info = function() {
-    const ret = wasm.build_info();
-    return takeObject(ret);
-};
-
-/**
 * @param {any} args
 * @returns {any}
 */
@@ -208,6 +191,23 @@ module.exports.acir_write_bytes = function(acir) {
     } finally {
         wasm.__wbindgen_add_to_stack_pointer(16);
     }
+};
+
+/**
+* @param {string} level
+*/
+module.exports.init_log_level = function(level) {
+    const ptr0 = passStringToWasm0(level, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
+    const len0 = WASM_VECTOR_LEN;
+    wasm.init_log_level(ptr0, len0);
+};
+
+/**
+* @returns {any}
+*/
+module.exports.build_info = function() {
+    const ret = wasm.build_info();
+    return takeObject(ret);
 };
 
 function handleError(f, args) {
