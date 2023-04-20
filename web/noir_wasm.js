@@ -283,7 +283,7 @@ function getImports() {
             wasm.__wbindgen_export_2(arg0, arg1);
         }
     };
-    imports.wbg.__wbg_readfile_b65dbb8c0bdbf836 = function() { return handleError(function (arg0, arg1, arg2) {
+    imports.wbg.__wbg_readfile_e0e65427440b9915 = function() { return handleError(function (arg0, arg1, arg2) {
         const ret = read_file(getStringFromWasm0(arg1, arg2));
         const ptr0 = passStringToWasm0(ret, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
         const len0 = WASM_VECTOR_LEN;
