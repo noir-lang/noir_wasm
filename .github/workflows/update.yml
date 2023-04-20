@@ -39,7 +39,7 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-      - uses: cachix/install-nix-action@v18
+      - uses: cachix/install-nix-action@v20
         with:
           nix_path: nixpkgs=channel:nixpkgs-22.05
 
