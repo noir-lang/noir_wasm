@@ -1,11 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-* @param {any} args
-* @returns {any}
-*/
-export function compile(args: any): any;
-/**
 * @param {Uint8Array} bytes
 * @returns {any}
 */
@@ -25,6 +20,11 @@ export function acir_read_bytes(bytes: Uint8Array): any;
 * @returns {Uint8Array}
 */
 export function acir_write_bytes(acir: any): Uint8Array;
+/**
+* @param {any} args
+* @returns {any}
+*/
+export function compile(args: any): any;
 /**
 * @param {string} level
 */
