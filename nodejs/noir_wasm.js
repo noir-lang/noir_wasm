@@ -117,6 +117,14 @@ function getInt32Memory0() {
     }
     return cachedInt32Memory0;
 }
+/**
+* @param {any} args
+* @returns {any}
+*/
+module.exports.compile = function(args) {
+    const ret = wasm.compile(addHeapObject(args));
+    return takeObject(ret);
+};
 
 function passArray8ToWasm0(arg, malloc) {
     const ptr = malloc(arg.length * 1);
@@ -128,38 +136,6 @@ function passArray8ToWasm0(arg, malloc) {
 * @param {Uint8Array} bytes
 * @returns {any}
 */
-module.exports.acir_from_bytes = function(bytes) {
-    const ptr0 = passArray8ToWasm0(bytes, wasm.__wbindgen_export_0);
-    const len0 = WASM_VECTOR_LEN;
-    const ret = wasm.acir_from_bytes(ptr0, len0);
-    return takeObject(ret);
-};
-
-function getArrayU8FromWasm0(ptr, len) {
-    return getUint8Memory0().subarray(ptr / 1, ptr / 1 + len);
-}
-/**
-* @param {any} acir
-* @returns {Uint8Array}
-*/
-module.exports.acir_to_bytes = function(acir) {
-    try {
-        const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
-        wasm.acir_to_bytes(retptr, addHeapObject(acir));
-        var r0 = getInt32Memory0()[retptr / 4 + 0];
-        var r1 = getInt32Memory0()[retptr / 4 + 1];
-        var v0 = getArrayU8FromWasm0(r0, r1).slice();
-        wasm.__wbindgen_export_2(r0, r1 * 1);
-        return v0;
-    } finally {
-        wasm.__wbindgen_add_to_stack_pointer(16);
-    }
-};
-
-/**
-* @param {Uint8Array} bytes
-* @returns {any}
-*/
 module.exports.acir_read_bytes = function(bytes) {
     const ptr0 = passArray8ToWasm0(bytes, wasm.__wbindgen_export_0);
     const len0 = WASM_VECTOR_LEN;
@@ -167,6 +143,9 @@ module.exports.acir_read_bytes = function(bytes) {
     return takeObject(ret);
 };
 
+function getArrayU8FromWasm0(ptr, len) {
+    return getUint8Memory0().subarray(ptr / 1, ptr / 1 + len);
+}
 /**
 * @param {any} acir
 * @returns {Uint8Array}
@@ -183,15 +162,6 @@ module.exports.acir_write_bytes = function(acir) {
     } finally {
         wasm.__wbindgen_add_to_stack_pointer(16);
     }
-};
-
-/**
-* @param {any} args
-* @returns {any}
-*/
-module.exports.compile = function(args) {
-    const ret = wasm.compile(addHeapObject(args));
-    return takeObject(ret);
 };
 
 /**
@@ -224,13 +194,13 @@ module.exports.__wbindgen_is_undefined = function(arg0) {
     return ret;
 };
 
-module.exports.__wbindgen_object_drop_ref = function(arg0) {
-    takeObject(arg0);
-};
-
 module.exports.__wbindgen_is_null = function(arg0) {
     const ret = getObject(arg0) === null;
     return ret;
+};
+
+module.exports.__wbindgen_object_drop_ref = function(arg0) {
+    takeObject(arg0);
 };
 
 module.exports.__wbindgen_string_new = function(arg0, arg1) {
