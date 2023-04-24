@@ -1,0 +1,51 @@
+name: Test noir-wasm-testing
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.repository }}
+
+      - name: Checkou
+        uses: actions/checkout@v3
+        with:
+          repository: aztecprotocol/noir-wasm-testing
+          path: noir-wasm-testing
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - name: Build noir_wasm
+        run: |
+          cargo build --release
+          cd target/release
+          mv noir_wasm noir_wasm_pull_request
+          cd ../../..
+
+      # - name: Build environment and Compile
+      #   run: |
+      #     nix-shell noir_wasm.nix --pure --run "./build.sh"
+
+      - name: Replace noir_wasm dependency in noir-wasm-testing
+        run: |
+          cd noir-wasm-testing
+          sed -i "s|path = \"../noir_wasm\"|path = \"../../target/release\"|" Cargo.toml
+
+      - name: Install dependencies and test noir-wasm-testing
+        run: |
+          cd noir-wasm-testing
+          cargo test
