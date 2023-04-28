@@ -229,7 +229,7 @@ module.exports.__wbg_error_f851667af71bcfc6 = function(arg0, arg1) {
     }
 };
 
-module.exports.__wbg_readfile_e0e65427440b9915 = function() { return handleError(function (arg0, arg1, arg2) {
+module.exports.__wbg_readfile_054a3fdf225f8fe7 = function() { return handleError(function (arg0, arg1, arg2) {
     const ret = read_file(getStringFromWasm0(arg1, arg2));
     const ptr0 = passStringToWasm0(ret, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
     const len0 = WASM_VECTOR_LEN;
