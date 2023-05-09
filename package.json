@@ -1,0 +1,26 @@
+{
+  "name": "@noir-lang/noir_wasm",
+  "collaborators": [
+    "The Noir Team <team@noir-lang.org>"
+  ],
+  "version": "0.5.1-260d87d",
+  "files": [
+    "nodejs",
+    "web",
+    "package.json"
+  ],
+  "main": "./nodejs/noir_wasm.js",
+  "types": "./web/noir_wasm.d.ts",
+  "module": "./web/noir_wasm.js",
+  "sideEffects": false,
+  "peerDependencies": {
+    "@noir-lang/noir-source-resolver": "1.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noir-lang/noir_wasm.git"
+  },
+  "compiler": {
+    "versionHash": "260d87d1ef86069a1fcf0f9b4969589273e381d1"
+  }
+}
