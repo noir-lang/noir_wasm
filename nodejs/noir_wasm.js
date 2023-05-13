@@ -117,14 +117,6 @@ function getInt32Memory0() {
     }
     return cachedInt32Memory0;
 }
-/**
-* @param {any} args
-* @returns {any}
-*/
-module.exports.compile = function(args) {
-    const ret = wasm.compile(addHeapObject(args));
-    return takeObject(ret);
-};
 
 function passArray8ToWasm0(arg, malloc) {
     const ptr = malloc(arg.length * 1);
@@ -181,6 +173,15 @@ module.exports.build_info = function() {
     return takeObject(ret);
 };
 
+/**
+* @param {any} args
+* @returns {any}
+*/
+module.exports.compile = function(args) {
+    const ret = wasm.compile(addHeapObject(args));
+    return takeObject(ret);
+};
+
 function handleError(f, args) {
     try {
         return f.apply(this, args);
@@ -188,6 +189,10 @@ function handleError(f, args) {
         wasm.__wbindgen_export_3(addHeapObject(e));
     }
 }
+
+module.exports.__wbindgen_object_drop_ref = function(arg0) {
+    takeObject(arg0);
+};
 
 module.exports.__wbindgen_is_undefined = function(arg0) {
     const ret = getObject(arg0) === undefined;
@@ -197,10 +202,6 @@ module.exports.__wbindgen_is_undefined = function(arg0) {
 module.exports.__wbindgen_is_null = function(arg0) {
     const ret = getObject(arg0) === null;
     return ret;
-};
-
-module.exports.__wbindgen_object_drop_ref = function(arg0) {
-    takeObject(arg0);
 };
 
 module.exports.__wbindgen_string_new = function(arg0, arg1) {
