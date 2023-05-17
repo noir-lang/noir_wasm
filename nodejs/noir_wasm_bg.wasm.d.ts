@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
-export function acir_read_bytes(a: number, b: number): number;
-export function acir_write_bytes(a: number, b: number): void;
 export function init_log_level(a: number, b: number): void;
 export function build_info(): number;
+export function acir_read_bytes(a: number, b: number): number;
+export function acir_write_bytes(a: number, b: number): void;
 export function compile(a: number): number;
 export function __wbindgen_export_0(a: number): number;
 export function __wbindgen_export_1(a: number, b: number, c: number): number;

@@ -1,6 +1,14 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+* @param {string} level
+*/
+export function init_log_level(level: string): void;
+/**
+* @returns {any}
+*/
+export function build_info(): any;
+/**
 * @param {Uint8Array} bytes
 * @returns {any}
 */
@@ -11,14 +19,6 @@ export function acir_read_bytes(bytes: Uint8Array): any;
 */
 export function acir_write_bytes(acir: any): Uint8Array;
 /**
-* @param {string} level
-*/
-export function init_log_level(level: string): void;
-/**
-* @returns {any}
-*/
-export function build_info(): any;
-/**
 * @param {any} args
 * @returns {any}
 */
@@ -28,10 +28,10 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly acir_read_bytes: (a: number, b: number) => number;
-  readonly acir_write_bytes: (a: number, b: number) => void;
   readonly init_log_level: (a: number, b: number) => void;
   readonly build_info: () => number;
+  readonly acir_read_bytes: (a: number, b: number) => number;
+  readonly acir_write_bytes: (a: number, b: number) => void;
   readonly compile: (a: number) => number;
   readonly __wbindgen_export_0: (a: number) => number;
   readonly __wbindgen_export_1: (a: number, b: number, c: number) => number;
