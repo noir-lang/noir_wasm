@@ -8,7 +8,7 @@ on:
         required: false
   push:
     branches:
-      - jb-nix-flake"
+      - "jb-nix-flake"
 
 jobs:
   update-and-publish:
