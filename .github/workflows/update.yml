@@ -51,7 +51,7 @@ jobs:
 
       - name: Build with Nix
         run: |
-          nix build -L github:noir-lang/noir/${{ github.ref }}.#wasm --extra-experimental-features nix-command --extra-experimental-features flakes
+          nix build -L github:noir-lang/noir/jb/noir-wasm-workflow.#wasm --extra-experimental-features nix-command --extra-experimental-features flakes
 
       - name: Resolve symbolic link
         run: |
