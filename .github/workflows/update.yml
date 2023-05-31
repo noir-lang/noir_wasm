@@ -6,9 +6,8 @@ on:
       noir-ref:
         description: The noir reference to checkout
         required: false
-  push:
-    branches:
-      - jb-nix-flake"
+  schedule:
+    - cron: "0 2 * * *" # run at 2 AM UTC
 
 jobs:
   update-and-publish:
@@ -49,19 +48,9 @@ jobs:
           name: nargo-cache
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: Build with Nix
+      - name: Build environment and Compile
         run: |
-          nix build -L github:noir-lang/noir/${{ github.ref }}.#wasm --extra-experimental-features nix-command --extra-experimental-features flakes
-
-      - name: Resolve symbolic link
-        run: |
-          echo "RESULT_PATH=$(readlink result)" >> $GITHUB_ENV
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: release-artifact
-          path: ${{ env.RESULT_PATH }}
+          nix-shell noir_wasm.nix --pure --run "./build.sh"
 
       - name: Configure git
         run: |
@@ -70,28 +59,26 @@ jobs:
 
       - name: Commit updates
         run: |
-          git branch -D testing-branch
-          git checkout -B testing-branch
           git add .
           git commit -m "tracking noir@${{ steps.collect-rev.outputs.NOIR_REV_SHORT }}"
           git push --force
 
-      # - name: Setup NodeJS
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: "18"
-      #     registry-url: "https://registry.npmjs.org"
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org"
 
-      # - name: Publish to npm (nightly tag)
-      #   if: ${{ !inputs.noir-ref }}
-      #   run: |
-      #     npm publish --tag nightly
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm (nightly tag)
+        if: ${{ !inputs.noir-ref }}
+        run: |
+          npm publish --tag nightly
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # - name: Publish to npm (latest tag)
-      #   if: ${{ inputs.noir-ref }}
-      #   run: |
-      #     npm publish --tag latest
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm (latest tag)
+        if: ${{ inputs.noir-ref }}
+        run: |
+          npm publish --tag latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
