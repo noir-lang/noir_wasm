@@ -70,11 +70,12 @@ jobs:
 
       - name: Commit updates
         run: |
-          git branch -D testing-branch
-          git checkout -B testing-branch
+          BRANCH_SUFFIX=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
+          BRANCH_NAME="testing-branch-$BRANCH_SUFFIX"
+          git checkout -B $BRANCH_NAME
           git add .
           git commit -m "tracking noir@${{ steps.collect-rev.outputs.NOIR_REV_SHORT }}"
-          git push --force
+          git push origin $BRANCH_NAME
 
       # - name: Setup NodeJS
       #   uses: actions/setup-node@v3
