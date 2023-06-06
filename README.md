@@ -5,4 +5,4 @@ This JavaScript package enables users to compile a Noir program, i.e. generating
 The package also handles dependency management like how Nargo (Noir's CLI tool) opreates, but the package is used just for compilation, not proving, verifying and simulating functions.
 
 ## Tracks
-Noir lang Repository [noir-lang/noir@703c51d](https://github.com/noir-lang/noir/tree/703c51d9c0225e07c19068e257ef6174affc1872)
+Noir lang Repository [noir-lang/noir@953b184](https://github.com/noir-lang/noir/tree/953b1847c0dbdeaa459ce91f16343efcd0807bc1)
