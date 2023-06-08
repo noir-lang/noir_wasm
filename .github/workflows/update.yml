@@ -67,12 +67,9 @@ jobs:
 
       - name: Commit updates
         run: |
-          BRANCH_SUFFIX=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
-          BRANCH_NAME="testing-branch-$BRANCH_SUFFIX"
-          git checkout -B $BRANCH_NAME
           git add .
           git commit -m "tracking noir@${{ steps.collect-rev.outputs.NOIR_REV_SHORT }}"
-          git push origin $BRANCH_NAME
+          git push --force
 
       - name: Publish to npm (nightly tag)
         if: ${{ !inputs.noir-ref }}
