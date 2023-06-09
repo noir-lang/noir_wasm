@@ -6,8 +6,6 @@ on:
       noir-ref:
         description: The noir reference to checkout
         required: false
-  schedule:
-    - cron: "0 2 * * *" # run at 2 AM UTC
 
 jobs:
   update-and-publish:
@@ -48,9 +46,19 @@ jobs:
           name: nargo-cache
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: Build environment and Compile
+      - name: Build with Nix
         run: |
-          nix-shell noir_wasm.nix --pure --run "./build.sh"
+          nix build -L github:noir-lang/noir/jb/noir-wasm-workflow#wasm
+
+      - name: Resolve symbolic link
+        run: |
+          echo "RESULT_PATH=$(readlink result)" >> $GITHUB_ENV
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-artifact
+          path: ${{ env.RESULT_PATH }}
 
       - name: Configure git
         run: |
@@ -62,12 +70,6 @@ jobs:
           git add .
           git commit -m "tracking noir@${{ steps.collect-rev.outputs.NOIR_REV_SHORT }}"
           git push --force
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Publish to npm (nightly tag)
         if: ${{ !inputs.noir-ref }}
