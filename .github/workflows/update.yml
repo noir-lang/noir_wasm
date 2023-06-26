@@ -48,7 +48,7 @@ jobs:
 
       - name: Build with Nix
         run: |
-          nix build -L github:noir-lang/noir/jb/noir-wasm-workflow#wasm
+          nix build -L github:noir-lang/noir/master/noir-wasm-workflow#wasm
 
       - name: Resolve symbolic link
         run: |
