@@ -116,22 +116,6 @@ function getInt32Memory0() {
     }
     return cachedInt32Memory0;
 }
-/**
-* @param {string} level
-*/
-export function init_log_level(level) {
-    const ptr0 = passStringToWasm0(level, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
-    const len0 = WASM_VECTOR_LEN;
-    wasm.init_log_level(ptr0, len0);
-}
-
-/**
-* @returns {any}
-*/
-export function build_info() {
-    const ret = wasm.build_info();
-    return takeObject(ret);
-}
 
 function passArray8ToWasm0(arg, malloc) {
     const ptr = malloc(arg.length * 1) >>> 0;
@@ -178,6 +162,23 @@ export function acir_write_bytes(acir) {
 */
 export function compile(args) {
     const ret = wasm.compile(addHeapObject(args));
+    return takeObject(ret);
+}
+
+/**
+* @param {string} level
+*/
+export function init_log_level(level) {
+    const ptr0 = passStringToWasm0(level, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
+    const len0 = WASM_VECTOR_LEN;
+    wasm.init_log_level(ptr0, len0);
+}
+
+/**
+* @returns {any}
+*/
+export function build_info() {
+    const ret = wasm.build_info();
     return takeObject(ret);
 }
 
@@ -260,7 +261,7 @@ function __wbg_get_imports() {
             wasm.__wbindgen_export_2(deferred0_0, deferred0_1);
         }
     };
-    imports.wbg.__wbg_readfile_865ff7b07c118548 = function() { return handleError(function (arg0, arg1, arg2) {
+    imports.wbg.__wbg_readfile_4d544606c78eda3f = function() { return handleError(function (arg0, arg1, arg2) {
         const ret = read_file(getStringFromWasm0(arg1, arg2));
         const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
         const len1 = WASM_VECTOR_LEN;
