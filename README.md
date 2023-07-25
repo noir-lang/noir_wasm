@@ -18,4 +18,4 @@ If you are within the noir repo and would like to build local changes, you can u
 nix build -L #wasm
 ```
 ## Tracking
-Built from [noir-lang/noir@d9e346e9b203650cc350159544ef4806ddf582e1](https://github.com/noir-lang/noir/tree/d9e346e9b203650cc350159544ef4806ddf582e1)
+Built from [noir-lang/noir@970c18ee29e37d35e39169005e629deed8b30b6e](https://github.com/noir-lang/noir/tree/970c18ee29e37d35e39169005e629deed8b30b6e)
