@@ -1,11 +1,11 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
+export function init_log_level(a: number, b: number): void;
+export function build_info(): number;
 export function acir_read_bytes(a: number, b: number): number;
 export function acir_write_bytes(a: number, b: number): void;
 export function compile(a: number): number;
-export function init_log_level(a: number, b: number): void;
-export function build_info(): number;
 export function rust_psm_on_stack(a: number, b: number, c: number, d: number): void;
 export function rust_psm_stack_direction(): number;
 export function rust_psm_stack_pointer(): number;
