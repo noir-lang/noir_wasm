@@ -2,7 +2,7 @@
 
 This JavaScript package enables users to compile a Noir program, i.e. generating its artifacts.
 
-The package also handles dependency management like how Nargo (Noir's CLI tool) opreates, but the package is used just for compilation, not proving, verifying and simulating functions.
+The package also handles dependency management like how Nargo (Noir's CLI tool) operates, but the package is used just for compilation, not proving, verifying and simulating functions.
 
 ## Building from source
 
@@ -19,4 +19,4 @@ nix build -L #wasm
 ```
 
 ## Tracking
-Built from [noir-lang/noir@7d0178987641f5cb8f8e95507c54c3cc367bf7d2](https://github.com/noir-lang/noir/tree/7d0178987641f5cb8f8e95507c54c3cc367bf7d2)
+Built from [noir-lang/noir@0508378345bfdad4b44f1b82aae203b16a24af9c](https://github.com/noir-lang/noir/tree/0508378345bfdad4b44f1b82aae203b16a24af9c)
