@@ -49,6 +49,7 @@ jobs:
         run: |
           git config user.name kobyhallx
           git config user.email koby@aztecprotocol.com
+          git remote set-url origin https://${{ github.repository_owner }}:${{ github.token }}@github.com/${{ github.repository }}.git
 
       - name: Copy output
         run: |
