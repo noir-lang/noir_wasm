@@ -19,4 +19,4 @@ nix build -L #wasm
 ```
 
 ## Tracking
-Built from [noir-lang/noir@2db759f43971c57e2f1f8284c82943e31a555d0c](https://github.com/noir-lang/noir/tree/2db759f43971c57e2f1f8284c82943e31a555d0c)
+Built from [noir-lang/noir@b55f3998258e9c82a0312fc138e3c6b5cf1a7c74](https://github.com/noir-lang/noir/tree/b55f3998258e9c82a0312fc138e3c6b5cf1a7c74)

@@ -1,13 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-* @param {string} level
-*/
-export function init_log_level(level: string): void;
-/**
+* @param {any} args
 * @returns {any}
 */
-export function build_info(): any;
+export function compile(args: any): any;
 /**
 * @param {Uint8Array} bytes
 * @returns {any}
@@ -19,20 +16,23 @@ export function acir_read_bytes(bytes: Uint8Array): any;
 */
 export function acir_write_bytes(acir: any): Uint8Array;
 /**
-* @param {any} args
+* @param {string} level
+*/
+export function init_log_level(level: string): void;
+/**
 * @returns {any}
 */
-export function compile(args: any): any;
+export function build_info(): any;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly init_log_level: (a: number, b: number) => void;
-  readonly build_info: () => number;
+  readonly compile: (a: number) => number;
   readonly acir_read_bytes: (a: number, b: number) => number;
   readonly acir_write_bytes: (a: number, b: number) => void;
-  readonly compile: (a: number) => number;
+  readonly init_log_level: (a: number, b: number) => void;
+  readonly build_info: () => number;
   readonly rust_psm_on_stack: (a: number, b: number, c: number, d: number) => void;
   readonly rust_psm_stack_direction: () => number;
   readonly rust_psm_stack_pointer: () => number;

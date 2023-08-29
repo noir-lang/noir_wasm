@@ -117,19 +117,11 @@ function getInt32Memory0() {
     return cachedInt32Memory0;
 }
 /**
-* @param {string} level
-*/
-export function init_log_level(level) {
-    const ptr0 = passStringToWasm0(level, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
-    const len0 = WASM_VECTOR_LEN;
-    wasm.init_log_level(ptr0, len0);
-}
-
-/**
+* @param {any} args
 * @returns {any}
 */
-export function build_info() {
-    const ret = wasm.build_info();
+export function compile(args) {
+    const ret = wasm.compile(addHeapObject(args));
     return takeObject(ret);
 }
 
@@ -173,11 +165,19 @@ export function acir_write_bytes(acir) {
 }
 
 /**
-* @param {any} args
+* @param {string} level
+*/
+export function init_log_level(level) {
+    const ptr0 = passStringToWasm0(level, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
+    const len0 = WASM_VECTOR_LEN;
+    wasm.init_log_level(ptr0, len0);
+}
+
+/**
 * @returns {any}
 */
-export function compile(args) {
-    const ret = wasm.compile(addHeapObject(args));
+export function build_info() {
+    const ret = wasm.build_info();
     return takeObject(ret);
 }
 
@@ -223,9 +223,6 @@ async function __wbg_load(module, imports) {
 function __wbg_get_imports() {
     const imports = {};
     imports.wbg = {};
-    imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
-        takeObject(arg0);
-    };
     imports.wbg.__wbindgen_is_undefined = function(arg0) {
         const ret = getObject(arg0) === undefined;
         return ret;
@@ -233,6 +230,9 @@ function __wbg_get_imports() {
     imports.wbg.__wbindgen_is_null = function(arg0) {
         const ret = getObject(arg0) === null;
         return ret;
+    };
+    imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
+        takeObject(arg0);
     };
     imports.wbg.__wbindgen_string_new = function(arg0, arg1) {
         const ret = getStringFromWasm0(arg0, arg1);
@@ -260,7 +260,7 @@ function __wbg_get_imports() {
             wasm.__wbindgen_export_2(deferred0_0, deferred0_1);
         }
     };
-    imports.wbg.__wbg_readfile_6641677e84090077 = function() { return handleError(function (arg0, arg1, arg2) {
+    imports.wbg.__wbg_readfile_d1a188fe39456faa = function() { return handleError(function (arg0, arg1, arg2) {
         const ret = read_file(getStringFromWasm0(arg1, arg2));
         const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_export_0, wasm.__wbindgen_export_1);
         const len1 = WASM_VECTOR_LEN;
