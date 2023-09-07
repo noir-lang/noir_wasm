@@ -23,3 +23,13 @@ export function init_log_level(level: string): void;
 * @returns {any}
 */
 export function build_info(): any;
+/**
+* A struct representing a Trap
+*/
+export class Trap {
+  free(): void;
+/**
+* @returns {Symbol}
+*/
+  static __wbgd_downcast_token(): Symbol;
+}

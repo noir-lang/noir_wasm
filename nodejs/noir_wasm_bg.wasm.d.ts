@@ -10,6 +10,8 @@ export function rust_psm_on_stack(a: number, b: number, c: number, d: number): v
 export function rust_psm_stack_direction(): number;
 export function rust_psm_stack_pointer(): number;
 export function rust_psm_replace_stack(a: number, b: number, c: number): void;
+export function __wbg_trap_free(a: number): void;
+export function trap___wbgd_downcast_token(): number;
 export function __wbindgen_export_0(a: number): number;
 export function __wbindgen_export_1(a: number, b: number, c: number): number;
 export function __wbindgen_add_to_stack_pointer(a: number): number;
